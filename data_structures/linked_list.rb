@@ -37,5 +37,25 @@ class LinkedList
         search_recursive(node.next, data)
     end
 
+
+    def delete(data)
+        delete_recursive(@head, data)
+    end
+
+    def delete_recursive(node, data)
+        if node.nil? || node.next.nil?
+            return nil
+        end
+
+        if node.next.data == data
+            tmp = node.next.data
+            node.next = node.next.next
+            @n -= 1
+            return tmp
+        end
+
+        delete_recursive(node.next, data)
+    end
+
     private :search_recursive
 end

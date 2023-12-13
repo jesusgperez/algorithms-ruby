@@ -31,9 +31,29 @@ RSpec.describe LinkedList do
 
             searched = linked_list.search(3)
             expect(searched.data).to eq(3)
-            
+
             searched = linked_list.search(6)
             expect(searched).to eq(nil)
+        end
+    end
+
+    describe '#linked_list-delete' do
+        it 'Delete an element from a linked list' do
+            linked_list = LinkedList.new
+            (1..6).each do |i|
+                linked_list.insert(i)
+            end
+
+            expect(linked_list.n).to eq(6)
+            removed = linked_list.delete(5)
+            expect(removed).to eq(5)
+            expect(linked_list.n).to eq(5)
+            
+            removed = linked_list.delete(6)
+            expect(removed).to eq(6)
+
+            removed = linked_list.delete(7)
+            expect(removed).to eq(nil)
         end
     end
 end
