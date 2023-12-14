@@ -3,7 +3,6 @@ require_relative 'domain'
 
 class LinkedList
     attr_reader :head, :tail, :n
-
     
     def initialize(head = nil, tail = nil)
         @head = head
