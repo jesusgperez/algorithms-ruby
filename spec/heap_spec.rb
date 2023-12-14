@@ -35,10 +35,22 @@ RSpec.describe Heap do
                 heap.insert(i)
             end
 
-            byebug
-
             expect(heap.queue[1]).to eq(1)
+        end
+    end
 
+    describe '#heap-extract_minimum' do
+        it 'Extracts the minimum value from the heap' do
+            heap = Heap.new
+            5.downto(1) do |i|
+                heap.insert(i)
+            end
+
+            expect(heap.extract_minimum).to eq(1)
+            expect(heap.extract_minimum).to eq(2)
+            expect(heap.extract_minimum).to eq(3)
+            expect(heap.extract_minimum).to eq(4)
+            expect(heap.extract_minimum).to eq(5)
         end
     end
 end

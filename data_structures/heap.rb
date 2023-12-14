@@ -36,6 +36,44 @@ class Heap
         end
     end
 
+    def extract_minimum
+        if @n < 1
+            return nil
+        end
+
+        min_value = @queue[1]
+        @queue[1] = @queue[@n]
+        @queue[@n] = nil
+        @n -= 1
+        self.bubble_down(1)
+        return min_value
+    end
+
+    def bubble_down(position)
+        left_child = self.get_child(position, HEAP_CHILD[:LEFT])
+        min_value = position
+
+        2.times do |i|
+            current = left_child + i
+            if current > @n
+                break
+            end
+
+            if @queue[current].nil?
+                break
+            end
+
+            if @queue[current] < @queue[min_value]
+                min_value = current
+            end
+        end
+
+        if min_value != position
+            self.swap(position, min_value)
+            self.bubble_down(min_value)
+        end
+    end
+
     def swap(left, right)
         if left > @n || right > @n
             return
