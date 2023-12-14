@@ -2,7 +2,8 @@ require_relative 'domain'
 
 
 class BaseTree
-    attr_reader :n, :root
+    attr_reader :n
+    attr_accessor :root
     def initialize
         @@root = nil
         @@n = 0
