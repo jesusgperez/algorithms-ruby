@@ -1,4 +1,5 @@
 require_relative 'base_tree'
+require_relative 'domain'
 
 
 class AVLTree < BaseTree
@@ -7,12 +8,18 @@ class AVLTree < BaseTree
     end
 
     def insert(data)
-        insert_recursive(@root, data)
+        tree = insert_recursive(@root, data)
+
+        if @root.nil?
+            @root = tree
+        end
+
+        tree
     end
 
     def insert_recursive(tree, data)
         if tree.nil?
-            return AVLTreeNode(data=data)
+            return AVLTreeNode.new(data=data)
         end
 
         if data < tree.data
@@ -32,7 +39,7 @@ class AVLTree < BaseTree
         elsif balance > 1 && data > tree.left.data
             tree.left = self.left_rotate(tree.left)
             return self.right_rotate(tree)
-        elsif balace < -1 && data < tree.right.data
+        elsif balance < -1 && data < tree.right.data
             tree.right = self.right_rotate(tree.right)
             return self.left_rotate(tree)
         end

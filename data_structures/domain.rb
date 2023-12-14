@@ -16,7 +16,7 @@ class DNode < LNode
     end
 end
 
-TreeTraverse = {
+tree_traverse = {
     PREORDER: 10,
     INORDER: 20,
     POSTORDER: 30

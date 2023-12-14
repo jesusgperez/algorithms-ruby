@@ -1,4 +1,5 @@
 require 'rspec'
+require 'byebug'
 require_relative '../data_structures/avl_tree'
 require_relative '../data_structures/domain'
 
@@ -76,6 +77,17 @@ RSpec.describe AVLTree do
             expect(avl_tree.root.data).to eq(3)
             expect(avl_tree.root.left.data).to eq(1)
             expect(avl_tree.root.right.data).to eq(2)
+        end
+    end
+
+    describe '#avl_tree-insertion' do
+        it 'Inserts an element into the balanced tree' do
+            avl_tree = AVLTree.new
+            for i in (1..7) do 
+                avl_tree.insert(i)
+            end
+
+            expect(avl_tree.root.data).to eq(4)
         end
     end
 end
