@@ -11,7 +11,33 @@ class AVLTree < BaseTree
     end
 
     def insert_recursive(tree, data)
+        if tree.nil?
+            return AVLTreeNode(data=data)
+        end
 
+        if data < tree.data
+            tree.left = self.insert_recursive(tree.left, data)
+        elsif data > tree.data
+            tree.right = self.insert_recursive(tree.right, data)
+        end
+
+        self.adjust_height(tree)
+
+        balance = self.get_tree_balance(tree)
+
+        if balance > 1 && data < tree.left.data
+            return self.right_rotate(tree)
+        elsif balance < -1 && data > tree.right.data
+            return self.left_rotate(tree)
+        elsif balance > 1 && data > tree.left.data
+            tree.left = self.left_rotate(tree.left)
+            return self.right_rotate(tree)
+        elsif balace < -1 && data < tree.right.data
+            tree.right = self.right_rotate(tree.right)
+            return self.left_rotate(tree)
+        end
+
+        return tree
     end
 
     def right_rotate(z)
