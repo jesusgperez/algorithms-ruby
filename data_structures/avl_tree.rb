@@ -10,6 +10,8 @@ class AVLTree < BaseTree
     def insert(data)
         tree = insert_recursive(@root, data)
 
+        @n += 1
+
         if @root.nil?
             @root = tree
         end
@@ -62,7 +64,7 @@ class AVLTree < BaseTree
         elsif data > tree.data
             tree.right = delete_recursive(tree.right, data)
         else
-            found = true
+            @n -= 1
             if tree.left.nil?
                 tmp = tree.right
                 tree = nil

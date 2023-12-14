@@ -90,4 +90,22 @@ RSpec.describe AVLTree do
             expect(avl_tree.root.data).to eq(4)
         end
     end
+
+    describe '#avl_tree-deletion' do
+        it 'Deletes elements from the balanced tree' do
+            avl_tree = AVLTree.new
+            for i in (1..7) do 
+                avl_tree.insert(i)
+            end
+
+            expect(avl_tree.n).to eq(7)
+
+            7.downto(4) do |i|
+                avl_tree.delete(i)
+            end
+
+            expect(avl_tree.root.data).to eq(2)
+            expect(avl_tree.n).to eq(3)
+        end
+    end
 end

@@ -2,11 +2,10 @@ require_relative 'domain'
 
 
 class BaseTree
-    attr_reader :n
-    attr_accessor :root
+    attr_accessor :root, :n
     def initialize
-        @@root = nil
-        @@n = 0
+        @root = nil
+        @n = 0
     end
 
     def search(data)
