@@ -14,6 +14,38 @@ class Heap
     end
 
 
+    def insert(data)
+        if @n >= @size
+            return nil
+        end
+
+        @n += 1
+        @queue[@n] = data
+        self.bubble_up(@n)
+    end
+
+    def bubble_up(position)
+        parent = self.get_parent(position)
+        if parent == -1
+            return
+        end
+
+        if @queue[parent] > @queue[position]
+            self.swap(parent, position)
+            self.bubble_up(parent)
+        end
+    end
+
+    def swap(left, right)
+        if left > @n || right > @n
+            return
+        end
+
+        buffer = @queue[left]
+        @queue[left] = @queue[right]
+        @queue[right] = buffer
+    end
+
     def get_parent(position)
         parent = position / 2
         if parent < 1
