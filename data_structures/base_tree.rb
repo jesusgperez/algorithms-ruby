@@ -53,6 +53,14 @@ class BaseTree
         return list
     end
 
+    def extract_minimum(tree)
+        if tree.nil? || tree.left.nil?
+            return tree
+        end
+
+        extract_minimum(tree.left)
+    end
+
     private :search_recursive, :traverse_recursive
 
 end

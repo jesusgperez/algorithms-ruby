@@ -47,6 +47,62 @@ class AVLTree < BaseTree
         return tree
     end
 
+    def delete(data)
+        delete_recursive(@root, data)
+    end
+
+    def delete_recursive(tree, data)
+        if tree.nil?
+            return tree
+        end
+
+        if data < tree.data
+            tree.left = delete_recursive(tree.left, data)
+
+        elsif data > tree.data
+            tree.right = delete_recursive(tree.right, data)
+        else
+            found = true
+            if tree.left.nil?
+                tmp = tree.right
+                tree = nil
+                return tmp
+
+            elsif tree.right.nil?
+                tmp = tree.left
+                tree = nil
+                return tmp
+            else
+                tmp = self.extract_minimum(tree.right)
+                tree.data = tmp.data
+                tree.right = self.delete_recursive(tree.right, tmp.data)
+            end
+        end
+
+        if tree.nil?
+            return tree
+        end
+
+        self.adjust_height(tree)
+        balance = self.get_tree_balance(tree)
+        left_balance = self.get_tree_balance(tree.left)
+        right_balance = self.get_tree_balance(tree.right)
+
+        if balance > 1 && left_balance >= 0
+            return self.right_rotate(tree)
+        elsif balance < - 1 && right_balance < 0
+            return self.left_rotate(tree)
+        elsif balance > 1 && left_balance < 0
+            tree.left = self.left_rotate(tree.left)
+            return self.right_rotate(tree)
+        elsif balance < -1 && right_balance >= 0
+            tree.right = right_rotation(tree.right)
+            return self.left_rotate(tree)
+        end
+
+        return tree
+    end
+
     def right_rotate(z)
         if z.nil? || z.left.nil?
             return z
