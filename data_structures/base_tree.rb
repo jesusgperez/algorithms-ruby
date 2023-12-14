@@ -27,7 +27,7 @@ class BaseTree
         return tree
     end
 
-    def traverse(traverse = tree_traverse[:INORDER])
+    def traverse(traverse = TREE_TRAVERSE[:INORDER])
         traverse_recursive(@root, traverse)
     end
 
@@ -36,11 +36,11 @@ class BaseTree
             return list
         end
 
-        if traverse == tree_traverse[:PREORDER]
+        if traverse == TREE_TRAVERSE[:PREORDER]
             list.append(tree.data)
             list = traverse_recursive(tree.left, traverse, list)
             list = traverse_recursive(tree.right, traverse, list)
-        elsif traverse == tree_traverse[:INORDER]
+        elsif traverse == TREE_TRAVERSE[:INORDER]
             list = traverse_recursive(tree.left, traverse, list)
             list.append(tree.data)
             list = traverse_recursive(tree.right, traverse, list)
