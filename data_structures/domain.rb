@@ -22,6 +22,11 @@ TREE_TRAVERSE = {
     POSTORDER: 30
 }
 
+HEAP_CHILD = {
+    LEFT: 10,
+    RIGHT: 20
+}
+
 class TreeNode
     attr_accessor :data, :left, :right
 
