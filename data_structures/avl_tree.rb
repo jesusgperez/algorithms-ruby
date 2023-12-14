@@ -50,7 +50,13 @@ class AVLTree < BaseTree
     end
 
     def delete(data)
-        delete_recursive(@root, data)
+        deleted = delete_recursive(@root, data)
+
+        unless deleted.nil?
+            @n -= 1
+        end
+
+        deleted
     end
 
     def delete_recursive(tree, data)
@@ -64,7 +70,6 @@ class AVLTree < BaseTree
         elsif data > tree.data
             tree.right = delete_recursive(tree.right, data)
         else
-            @n -= 1
             if tree.left.nil?
                 tmp = tree.right
                 tree = nil
