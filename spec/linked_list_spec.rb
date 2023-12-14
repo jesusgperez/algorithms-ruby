@@ -56,4 +56,20 @@ RSpec.describe LinkedList do
             expect(removed).to eq(nil)
         end
     end
+
+    describe '#linked_list-has_cycle' do
+        it 'Verifies if theres a cycle in the list' do
+            linked_list = LinkedList.new
+            
+            (1..10).each do |i|
+                linked_list.insert(i)
+            end
+
+            linked_list.tail.next = linked_list.head
+
+            expect(
+                linked_list.has_cycle(node=linked_list.head)
+            ).to eq(true)
+        end
+    end
 end

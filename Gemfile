@@ -6,5 +6,5 @@ source "https://rubygems.org"
 
 gem 'rspec'
 gem 'debug'
-gem 'ruby-debug-ide'
 gem 'byebug'
+gem 'solargraph'
