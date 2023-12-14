@@ -176,6 +176,6 @@ class AVLTree < BaseTree
         self.get_tree_height(tree.left) - self.get_tree_height(tree.right)
     end
 
-    private :insert_recursive
+    private :insert_recursive, :delete_recursive
 end
 
