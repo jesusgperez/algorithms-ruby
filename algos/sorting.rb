@@ -1,5 +1,6 @@
 require_relative '../data_structures/heap'
 require_relative '../data_structures/count_tree'
+require_relative '../data_structures/avl_tree'
 
 def heap_sort(array)
     heap = Heap.new
