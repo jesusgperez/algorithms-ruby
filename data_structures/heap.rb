@@ -13,7 +13,6 @@ class Heap
         @n = 0
     end
 
-
     def make(array)
         @n = array.length
         array.insert(0, nil)
