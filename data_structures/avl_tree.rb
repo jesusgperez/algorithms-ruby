@@ -115,11 +115,10 @@ class AVLTree < BaseTree
             return z
         end
 
-        y = z.left
+        y= z.left
         t2 = y.right
 
-        z.left = t2
-        y.right = z
+        z.left, y.right = t2, z
 
         if z == @root
             @root = y
@@ -139,8 +138,7 @@ class AVLTree < BaseTree
         y = z.right
         t2 = y.left
 
-        z.right = t2
-        y.left = z
+        z.right, y.left = t2, z
 
         if z == @root
             @root = y

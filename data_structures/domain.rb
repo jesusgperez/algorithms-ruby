@@ -45,3 +45,12 @@ class AVLTreeNode < TreeNode
         @height = height
     end
 end
+
+class SegmentTreeNode < TreeNode
+    attr_accessor :indexes
+
+    def initialize(data = nil, left = nil, right = nil, indexes)
+        super(data, left, right)
+        @indexes = indexes
+    end
+end
