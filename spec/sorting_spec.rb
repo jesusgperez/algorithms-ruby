@@ -20,6 +20,17 @@ RSpec.describe 'Sorting' do
             array = [5,6,4,2,9,8,7,11,10]
             merge_sort(array, 0, array.length - 1)
 
+            0.upto(array.length - 2) do |i|
+                expect(array[i] < array[i+1]).to be true
+            end
+        end
+    end
+
+    describe '#quick_sort' do
+        it 'tests the quick sort algorithm' do
+            array = [5,6,4,2,9,8,7,11,10]
+            quick_sort(array, 0, array.length - 1)
+
             byebug
 
             0.upto(array.length - 2) do |i|

@@ -54,3 +54,36 @@ def merge(array, low, mid, high)
         i += 1
     end
 end
+
+
+def quick_sort(array, low, high)
+    if low < high
+        partition = get_partition(array, low, high)
+        quick_sort(array, low, partition - 1)
+        quick_sort(array, partition + 1, high)
+    end
+end
+
+
+def get_partition(array, low, high)
+    partition = high
+    first_high = low
+
+    (low..high-1).each do |i|
+        if array[i] < array[partition]
+            array_swap(array, first_high, i)
+            first_high += 1
+        end
+    end
+
+    array_swap(array, partition, first_high)
+
+    first_high
+end
+
+
+def array_swap(array, left, right)
+    buff = array[left]
+    array[left] = array[right]
+    array[right] = buff
+end
