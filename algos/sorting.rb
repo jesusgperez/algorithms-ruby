@@ -1,4 +1,5 @@
 require_relative '../data_structures/heap'
+require_relative '../data_structures/count_tree'
 
 def heap_sort(array)
     heap = Heap.new
@@ -86,4 +87,21 @@ def array_swap(array, left, right)
     buff = array[left]
     array[left] = array[right]
     array[right] = buff
+end
+
+
+def count_smaller_after_self(array)
+    min_value = array.min
+    max_value = array.max
+
+    tree = CountTree.new(min_value, max_value)
+
+    counts = []
+
+    (array.length - 1).downto(0) do |i|
+        tree.update(array[i])
+        counts.append(tree.get_sum_range(min_value, array[i]-1))
+    end
+
+    return counts.reverse
 end

@@ -31,11 +31,18 @@ RSpec.describe 'Sorting' do
             array = [5,6,4,2,9,8,7,11,10]
             quick_sort(array, 0, array.length - 1)
 
-            byebug
-
             0.upto(array.length - 2) do |i|
                 expect(array[i] < array[i+1]).to be true
             end
+        end
+    end
+
+    describe '#count_smaller_after_self' do
+        it 'tests the count smaller after self' do
+            array = [5,6,4,2,9,8,7,11,10]
+            smaller = count_smaller_after_self(array)
+
+            expect(smaller).to eq([2,2,1,0,2,1,0,1,0])
         end
     end
 end
