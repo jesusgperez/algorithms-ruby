@@ -33,8 +33,6 @@ RSpec.describe CountTree do
             tree.update(10)
             tree.update(9)
             tree.update(1)
-            
-            byebug
 
             expect(tree.get_sum_range(8,10)).to eq(2)
             expect(tree.get_sum_range(1,3)).to eq(1)

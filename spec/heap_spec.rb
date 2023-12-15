@@ -53,4 +53,17 @@ RSpec.describe Heap do
             expect(heap.extract_minimum).to eq(5)
         end
     end
+
+    describe '#heap-make_heap' do
+        it 'Creates a heap in linear time' do
+            heap = Heap.new
+            heap.make([8,10,9,2,3,5,4])
+
+            expect(heap.extract_minimum).to eq(2)
+            expect(heap.extract_minimum).to eq(3)
+            expect(heap.extract_minimum).to eq(4)
+            expect(heap.extract_minimum).to eq(5)
+            expect(heap.extract_minimum).to eq(8)
+        end
+    end
 end

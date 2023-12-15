@@ -14,6 +14,18 @@ class Heap
     end
 
 
+    def make(array)
+        @n = array.length
+        array.insert(0, nil)
+        @queue = array + [nil] * (@size - @n)        
+
+        mid = @n / 2
+
+        mid.downto(0) do |i|
+            self.bubble_down(i)
+        end
+    end
+
     def insert(data)
         if @n >= @size
             return nil
